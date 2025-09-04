@@ -37,7 +37,8 @@ type Person = {
 };
 
 export const Navbar = () => {
-const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobileOpen, setMobileOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const [userID, setUserID] = useState<string | null>(null);
   const [personDatas, setPersonDatas] = useState<Person[]>([]);
   const theme = useTheme();
@@ -72,15 +73,15 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
   };
 
   const navItems = [
-    { label: "HOME", href: "#", icon: <HomeIcon sx={{ fontSize: 18 }} /> },
+    { label: "HOME", href: "/", icon: <HomeIcon sx={{ fontSize: 18 }} /> },
     {
       label: "PROFILE",
-      href: "#",
+      href: "/profile",
       icon: <ProfileIcon sx={{ fontSize: 18 }} />,
     },
     {
       label: "INTERVIEWS",
-      href: "#",
+      href: "/interviews",
       icon: <InterviewsIcon sx={{ fontSize: 18 }} />,
     },
   ];
@@ -90,6 +91,7 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
       <Box sx={{ px: 2, pb: 2, borderBottom: "1px solid #e0e0e0" }}>
         <Typography
           variant="h6"
+          onClick={() => router.push("/")}
           sx={{
             fontFamily: "monospace",
             fontWeight: "bold",
@@ -151,10 +153,10 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
             py={1.5}
             px={{ xs: 1, sm: 2 }}
           >
-            {/* Logo */}
             <Box display="flex" alignItems="center">
               <Typography
                 variant="h5"
+                onClick={() => router.push("/")}
                 sx={{
                   fontFamily: "monospace",
                   fontWeight: "bold",
@@ -175,7 +177,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
               </Typography>
             </Box>
 
-            {/* Desktop Navigation */}
             {!isMobile && (
               <Stack direction="row" spacing={1} alignItems="center">
                 {navItems.map((item) => (
@@ -209,9 +210,7 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
               </Stack>
             )}
 
-            {/* Right Side Icons */}
             <Stack direction="row" spacing={1} alignItems="center">
-              {/* Notifications */}
               {userID && (
                 <IconButton
                   size="medium"
@@ -227,7 +226,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
                 </IconButton>
               )}
 
-              {/* Settings */}
               {userID && (
                 <IconButton
                   size="medium"
@@ -241,7 +239,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
                 </IconButton>
               )}
 
-              {/* Profile Avatar */}
               <IconButton
                 onClick={handleProfileMenuOpen}
                 size="small"
@@ -266,7 +263,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
                 </Avatar>
               </IconButton>
 
-              {/* Mobile Menu Button */}
               {isMobile && (
                 <IconButton
                   color="inherit"
@@ -284,7 +280,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
         </Container>
       </AppBar>
 
-      {/* Profile Menu */}
       <Menu
         anchorEl={anchorEl}
         anchorOrigin={{
@@ -333,7 +328,7 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
           <MenuItem key="settings" onClick={handleMenuClose} sx={{ py: 1.5 }}>
             <SettingsIcon sx={{ mr: 2, color: "#13678A" }} />
             <Link
-              href="/settings"
+              href="/profile?tab=settings"
               sx={{ textDecoration: "none", color: "#13678A" }}
             >
               Settings

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import {
   Box,
@@ -70,9 +72,7 @@ export const Footer = () => {
       }}
     >
       <Container maxWidth="xl" sx={{ py: 8 }}>
-        {/* Main Footer Content */}
         <Grid container spacing={4}>
-          {/* Brand Section */}
           <Grid container>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -132,7 +132,6 @@ export const Footer = () => {
             </motion.div>
           </Grid>
 
-          {/* Footer Sections */}
           {footerSections.map((section, sectionIndex) => (
             <Grid container key={section.title}>
               <motion.div
@@ -194,7 +193,6 @@ export const Footer = () => {
 
         <Divider sx={{ my: 6, borderColor: "rgba(255,255,255,0.1)" }} />
 
-        {/* Bottom Section */}
         <Grid
           container
           spacing={4}

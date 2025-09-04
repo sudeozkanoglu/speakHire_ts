@@ -16,7 +16,7 @@ export interface AlertState { type: AlertSeverity; message: string }
 
 interface LoginFormProps {
   setAlert: React.Dispatch<React.SetStateAction<AlertState | null>>;
-  onSuccess: (userType: string) => void; // ör: "user" gelirse yönlendirme
+  onSuccess: (userType: string) => void;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ setAlert, onSuccess }) => {
@@ -54,8 +54,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ setAlert, onSuccess }) => {
       }
     } catch (err) {
       const error = err as AxiosError<{ message?: string }>;
-      console.log(error);
-      console.log("2", error.response?.data.message);
       setAlert({
         type: "error",
         message: error.response?.data?.message || error.message || "An error occurred. Please try again.",
