@@ -5,7 +5,7 @@ import type { IUserData } from "../interfaces/userData";
 import {
   loginValidation,
   registerValidation,
-} from "../validation/authValidation";
+} from "../validations/authValidation";
 
 export const registerController = async (req: Request, res: Response) => {
   const { error } = registerValidation.validate(req.body);

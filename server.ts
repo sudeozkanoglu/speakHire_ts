@@ -4,6 +4,7 @@ import 'dotenv/config'
 import connectDB from "./configs/db"
 import authRouter from "./routes/authRoutes"
 import { webcrypto } from "crypto";
+import userRouter from "./routes/userRoutes"
 
 if (!globalThis.crypto) {
   globalThis.crypto = webcrypto as unknown as Crypto;
@@ -27,6 +28,7 @@ connectDB();
 
 // api endpoints
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
 
 
 app.get("/", (req,res)=>{

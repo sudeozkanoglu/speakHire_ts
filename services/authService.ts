@@ -6,7 +6,6 @@ import { AppError } from "../utils/appError";
 
 export const registerService = async (userData: IUserData) => {
   // TO DO => how can I use ternary operator ? Which place should be change for using it ?
-
   const existingUser = await User.findOne({ userName: userData.userName });
   if (existingUser) {
     throw new AppError("User already exists");
