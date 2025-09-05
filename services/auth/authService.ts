@@ -1,12 +1,11 @@
-import User from "../models/userModel";
-import { hashPassword, comparePassword } from "../utils/hashPassword";
-import { generateToken } from "../utils/generateToken";
-import type { IUserData } from "../interfaces/userData";
-import { AppError } from "../utils/appError";
+import { IUserData } from "../../interfaces/user/userData";
+import User from "../../models/user/userModel";
+import { AppError } from "../../utils/appError";
+import { generateToken } from "../../utils/auth/generateToken";
+import { comparePassword, hashPassword } from "../../utils/auth/passwordProccessing";
+
 
 export const registerService = async (userData: IUserData) => {
-  // TO DO => how can I use ternary operator ? Which place should be change for using it ?
-
   const existingUser = await User.findOne({ userName: userData.userName });
   if (existingUser) {
     throw new AppError("User already exists");
