@@ -11,16 +11,11 @@ const EducationTab: React.FC<EducationTabProps & { value: number; index: number 
   index,
   onUpdated
 }) => {
-  const handleEducationDelete = (id?: string) => {
-    console.log('Delete education with id:', id);
-  };
-
   return (
     <TabPanel value={value} index={index}>
       <EducationCard
         education={userProfile.education || []}
         isEditing={editingSections.education}
-        onDelete={handleEducationDelete}
         onToggleEdit={onToggleEdit}  
         userProfile={userProfile}
         onUpdated={onUpdated}

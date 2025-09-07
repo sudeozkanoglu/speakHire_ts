@@ -149,8 +149,7 @@ export interface SkillsCardProps {
 export interface EducationCardProps {
   userProfile: UserProfile;
   education: Education[];
-  isEditing: boolean;
-  onDelete?: (id?: string) => void;      
+  isEditing: boolean;    
   onToggleEdit?: (section: keyof EditingSections) => void;
   onUpdated: (user: UserProfile) => void;
 }

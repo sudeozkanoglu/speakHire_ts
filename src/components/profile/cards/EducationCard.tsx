@@ -15,17 +15,20 @@ import ModernCard from "./ModernCard";
 import { Education, EducationCardProps } from "../types/profile.types";
 import EducationModal from "../modals/EducationModal";
 
+export interface ExtendedEducation extends Education {
+  __tmpId?: string;
+}
+
 const EducationCard: React.FC<EducationCardProps> = ({
   userProfile,
   education,
   isEditing,
   onToggleEdit,
-  onDelete,
   onUpdated,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [items, setItems] = useState<Education[]>(() => education ?? []);
-  const [newItems, setNewItems] = useState<Education[]>([]);
+  const [items, setItems] = useState<ExtendedEducation[]>(() => education ?? []);
+  const [newItems, setNewItems] = useState<ExtendedEducation[]>([]);
 
   const handleAddFromModal = (newEdu: Education) => {
     setItems((prev) => [...prev, newEdu]);
@@ -34,14 +37,13 @@ const EducationCard: React.FC<EducationCardProps> = ({
   };
 
   const handleLocalDelete = (id?: string) => {
-    setItems((prev) =>
-      prev.filter((e) => e._id !== id && (e as any).__tmpId !== id)
-    );
-    setNewItems((prev) =>
-      prev.filter((e) => e._id !== id && (e as any).__tmpId !== id)
-    );
-    onDelete?.(id);
-  };
+  setItems((prev) =>
+    prev.filter((e) => e._id !== id && e.__tmpId !== id)
+  );
+  setNewItems((prev) =>
+    prev.filter((e) => e._id !== id && e.__tmpId !== id)
+  );
+};
 
   const handleChange =
     (index: number, key: keyof Education) =>

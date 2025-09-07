@@ -25,10 +25,10 @@ const PersonalInfoCard: React.FC<PersonalInfoCardProps> = ({
       firstName: userProfile.firstName || "",
       lastName: userProfile.lastName || "",
       email: userProfile.email || "",
-      phone: (userProfile as any).phone || "",
+      phone: userProfile.phone || "",
       location: userProfile.location || "",
-      userName: (userProfile as any).userName || "",
-      position: (userProfile as any).position || "",
+      userName: userProfile.userName || "",
+      position: userProfile.position || "",
     });
   }, [userProfile]);
 

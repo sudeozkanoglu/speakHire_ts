@@ -6,6 +6,7 @@ import { Box, CircularProgress, Typography } from "@mui/material";
 import MyProfilePage from "@/components/profile/MyProfilePage";
 import { Navbar } from "@/components/Navbar";
 import { UserProfile } from "@/components/profile/types/profile.types";
+import { LoadingComponent } from "@/components/LoadingComponent";
 
 // //Why we used that learn !
 // export const metadata: Metadata = {
@@ -17,31 +18,6 @@ import { UserProfile } from "@/components/profile/types/profile.types";
 //   viewport: "width=device-width, initial-scale=1",
 //   robots: "index, follow",
 // };
-
-// Loading Component
-
-const LoadingComponent = () => (
-  <Box
-    sx={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      minHeight: "60vh",
-      gap: 2,
-    }}
-  >
-    <CircularProgress
-      size={40}
-      sx={{
-        color: "primary.main",
-      }}
-    />
-    <Typography variant="body2" color="text.secondary">
-      Profile Knowledge is loading...
-    </Typography>
-  </Box>
-);
 
 export default function ProfilePage() {
   const [userId, setUserId] = useState<string | null>(null);
