@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/Navbar/Navbar";
 import {
   Box,
   Container,
@@ -24,7 +24,7 @@ import { SearchBar } from "@/components/SearchBar";
 import { AlertBox } from "@/components/AlertBox";
 import { FilterButtons } from "@/components/FilterButtons";
 import { CardStructure } from "@/components/CardStructure";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/Footer/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 
