@@ -4,7 +4,7 @@ import type { IUserData } from "../../interfaces/user/userData";
 import {
   loginValidation,
   registerValidation,
-} from "../../validation/auth/authValidation";
+} from "../../validations/auth/authValidation";
 import { loginService, registerService } from "../../services/auth/authService";
 
 export const registerController = async (req: Request, res: Response) => {

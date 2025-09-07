@@ -3,6 +3,7 @@ import cors from "cors"
 import 'dotenv/config'
 import connectDB from "./configs/db"
 import { webcrypto } from "crypto";
+import userRouter from "./routes/user/userRoutes"
 import authRouter from "./routes/auth/authRoutes";
 
 if (!globalThis.crypto) {
@@ -27,6 +28,7 @@ connectDB();
 
 // api endpoints
 app.use("/api/auth", authRouter);
+app.use("/api/users", userRouter);
 
 
 app.get("/", (req,res)=>{
