@@ -18,7 +18,7 @@ import type { AlertState } from "./LoginForm";
 
 interface RegisterFormProps {
   setAlert: React.Dispatch<React.SetStateAction<AlertState | null>>;
-  onRegistered: () => void; // başarıyla kayıt -> login sayfasına geç
+  onRegistered: () => void; 
 }
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ setAlert, onRegistered }) => {
