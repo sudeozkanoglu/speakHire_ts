@@ -7,7 +7,7 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
     if(!authHeader){
         return res.json({success: false, message: "Not Authorized Login Again"});
     }
-
+    
     const token = authHeader.split(" ")[1];
     try {
         const token_decode = jwt.verify(token!, process.env.JWT_SECRET!) as { id: string };

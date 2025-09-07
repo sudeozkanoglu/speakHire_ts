@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
-import { loginService, registerService } from "../services/authService";
-import type { IUserData } from "../interfaces/userData";
+import type { IUserData } from "../../interfaces/user/userData";
 import {
   loginValidation,
   registerValidation,
-} from "../validations/authValidation";
+} from "../../validations/auth/authValidation";
+import { loginService, registerService } from "../../services/auth/authService";
 
 export const registerController = async (req: Request, res: Response) => {
   const { error } = registerValidation.validate(req.body);
