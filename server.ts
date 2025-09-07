@@ -2,8 +2,8 @@ import express from "express"
 import cors from "cors"
 import 'dotenv/config'
 import connectDB from "./configs/db"
-import authRouter from "./routes/authRoutes"
 import { webcrypto } from "crypto";
+import authRouter from "./routes/auth/authRoutes";
 
 if (!globalThis.crypto) {
   globalThis.crypto = webcrypto as unknown as Crypto;
