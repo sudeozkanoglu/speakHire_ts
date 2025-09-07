@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { userService } from "../services/userService";
-import { userUpdateValidation } from "../validations/userValidation";
+import { userService } from "../../services/user/userService";
+import { userUpdateValidation } from "../../validations/user/userValidation";
 
 
 const getAllUsers = async (req: Request, res: Response) => {

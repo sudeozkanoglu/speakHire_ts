@@ -1,6 +1,6 @@
 import { UpdateQuery } from "mongoose";
-import User from "../models/userModel";
-import { IUserData } from "../interfaces/userData";
+import { IUserData } from "../../interfaces/user/userData";
+import User from "../../models/user/userModel";
 
 interface ExtendedUpdateData extends UpdateQuery<IUserData> {
   mode?: "replace" | string;
