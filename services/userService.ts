@@ -2,6 +2,11 @@ import { UpdateQuery } from "mongoose";
 import User from "../models/userModel";
 import { IUserData } from "../interfaces/userData";
 
+interface ExtendedUpdateData extends UpdateQuery<IUserData> {
+  mode?: "replace" | string;
+  education?: IUserData["education"];
+}
+
 // FOR ADMIN PAGE
 const getAllUsers = async () => {
   try {
@@ -18,15 +23,15 @@ const getUserById = async (userId: string) => {
     const user = await User.findById(userId);
     return user;
   } catch (error) {
-    throw new Error("Error fetching user");
+    throw new Error(`Error fetching user ${userId}`);
   }
 };
 
 const updateUserById = async (
   userId: string,
-  updateData: UpdateQuery<IUserData>
+  updateData: ExtendedUpdateData
 ) => {
-  const { education, mode } = updateData as any;
+  const { education, mode } = updateData;
   try {
     if (mode === "replace" && Array.isArray(education)) {
       const updatedUser = await User.findByIdAndUpdate(
@@ -43,7 +48,7 @@ const updateUserById = async (
       return updatedUser;
     }
   } catch (error) {
-    throw new Error("Error updating user");
+    throw new Error(`Error updating user ${userId}`);
   }
 };
 

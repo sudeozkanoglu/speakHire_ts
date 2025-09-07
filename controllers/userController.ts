@@ -20,7 +20,7 @@ const getUserById = async (req: Request, res: Response) => {
         }
         res.json(user);
     } catch (error) {
-        res.status(500).json({ message: "Error fetching user" });
+        res.status(500).json({ message: `Error fetching user ${req.params.id}` });
     }
 };
 
@@ -36,7 +36,7 @@ const updateUserById = async (req: Request, res: Response) => {
         return res.json({ user: updatedUser });
     } catch (error: any) {
         console.error("controller update error:", error);
-        return res.status(500).json({ message: error?.message || "Error updating user" });
+        return res.status(500).json({ message: error?.message || `Error fetching user ${req.params.id}` });
     }
 };
 
