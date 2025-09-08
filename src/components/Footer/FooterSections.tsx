@@ -8,18 +8,12 @@ import {
   Chip
 } from "@mui/material";
 import { motion } from "framer-motion";
-
+import { FooterSection } from "./footerData";
 
 export interface FooterLink {
   label: string;
   href: string;
   tag?: "Popular" | "New" | string;
-}
-
-export interface FooterSection {
-  title: string;
-  icon: ReactElement;
-  links: FooterLink[];
 }
 
 interface FooterSectionsProps {
@@ -28,6 +22,8 @@ interface FooterSectionsProps {
 }
 
 export const FooterSections: React.FC<FooterSectionsProps> = ({ section, sectionIndex }) => {
+  const Icon = section.icon;
+  
   return (
     <Grid container key={section.title}>
       <motion.div
@@ -36,7 +32,7 @@ export const FooterSections: React.FC<FooterSectionsProps> = ({ section, section
         transition={{ duration: 0.6, delay: 0.1 * (sectionIndex + 1) }}
       >
         <Box sx={{ mb: 3, display: "flex", alignItems: "center", gap: 1 }}>
-          <Box sx={{ color: "#667eea" }}>{section.icon}</Box>
+          <Box sx={{ color: "#667eea" }}><Icon fontSize="small" /></Box>
           <Typography variant="h6" sx={{ fontWeight: "bold" }}>
             {section.title}
           </Typography>

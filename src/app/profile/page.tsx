@@ -1,12 +1,12 @@
 "use client";
 
 import React, { Suspense, useEffect, useState } from "react";
-import { Metadata } from "next";
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import MyProfilePage from "@/components/profile/MyProfilePage";
-import { Navbar } from "@/components/Navbar";
 import { UserProfile } from "@/components/profile/types/profile.types";
 import { LoadingComponent } from "@/components/LoadingComponent";
+import { useUserID } from "@/components/hooks/useUserID";
+import { Navbar } from "@/components/Navbar/Navbar";
 
 // //Why we used that learn !
 // export const metadata: Metadata = {
@@ -20,15 +20,8 @@ import { LoadingComponent } from "@/components/LoadingComponent";
 // };
 
 export default function ProfilePage() {
-  const [userId, setUserId] = useState<string | null>(null);
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const storedUserId = localStorage.getItem("userID");
-      setUserId(storedUserId);
-    }
-  }, []);
+  const userId = useUserID();
 
   useEffect(() => {
     const getUserKnowledge = async () => {

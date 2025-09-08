@@ -12,16 +12,12 @@ import {
   ListItem,
   Typography
 } from "@mui/material";
-import {
-  Home as HomeIcon,
-  AccountCircle as ProfileIcon,
-  Work as InterviewsIcon
-} from "@mui/icons-material";
 import { useRouter } from "next/navigation";
 import { DesktopNavigation } from "./DesktopNavigation";
 import { RightSideIcons } from "./RightSideIcons";
 import { ProfileMenu } from "./ProfileMenu";
 import { useUserID } from "../hooks/useUserID";
+import { navItems } from "./navbarItems";
 
 export const Navbar = () => {
 const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,19 +45,6 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
     router.push("/auth");
   };
 
-  const navItems = [
-    { label: "HOME", href: "#", icon: <HomeIcon sx={{ fontSize: 18 }} /> },
-    {
-      label: "PROFILE",
-      href: "#",
-      icon: <ProfileIcon sx={{ fontSize: 18 }} />,
-    },
-    {
-      label: "INTERVIEWS",
-      href: "#",
-      icon: <InterviewsIcon sx={{ fontSize: 18 }} />,
-    },
-  ];
 
   const drawer = (
     <Box sx={{ width: 250, pt: 2 }}>
@@ -79,12 +62,14 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
         </Typography>
       </Box>
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label} sx={{ py: 1.5 }}>
-            <Link
-              href={item.href}
-              sx={{
-                display: "flex",
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (    
+            <ListItem key={item.label} sx={{ py: 1.5 }}>
+              <Link
+                href={item.href}
+                sx={{
+                  display: "flex",
                 alignItems: "center",
                 gap: 1.5,
                 color: "#13678A",
@@ -99,13 +84,13 @@ const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);  const [mobi
                 },
               }}
             >
-              {item.icon}
+              <Icon fontSize="small" />
               <Typography variant="body1" fontWeight="500">
                 {item.label}
               </Typography>
             </Link>
           </ListItem>
-        ))}
+        )})}
       </List>
     </Box>
   );
