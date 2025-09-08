@@ -1,8 +1,8 @@
-import React from "react";
-import { Stack, Link } from "@mui/material";
+import React, { ComponentType } from "react";
+import { Stack, Link, SvgIconProps } from "@mui/material";
 
 interface DesktopNavigationProps {
-  navItems: { label: string; href: string; icon: React.ReactNode }[];
+  navItems: { label: string; href: string; icon: ComponentType<SvgIconProps> }[];
 }
 
 export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
@@ -34,7 +34,7 @@ export const DesktopNavigation: React.FC<DesktopNavigationProps> = ({
             },
           }}
         >
-          {item.icon}
+          <item.icon fontSize="small" />
           {item.label}
         </Link>
       ))}

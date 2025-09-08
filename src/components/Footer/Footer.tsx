@@ -1,39 +1,11 @@
 import React from "react";
 import { Box, Container, Grid, Divider } from "@mui/material";
-import { Support, School, Work } from "@mui/icons-material";
 import { BrandSections } from "./BrandSections";
 import { FooterSections } from "./FooterSections";
 import { BottomSections } from "./BottomSections";
+import { footerSections } from "./footerData";
 
 export const Footer = () => {
-  const footerSections = [
-    {
-      title: "Interview Types",
-      icon: <Work fontSize="small" />,
-      links: [
-        { label: "Frontend Developer", href: "#", tag: "Popular" },
-        { label: "Backend Developer", href: "#", tag: "New" },
-        { label: "Full Stack", href: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      icon: <School fontSize="small" />,
-      links: [
-        { label: "Interview Guide", href: "#" },
-        { label: "Templates", href: "#" },
-      ],
-    },
-    {
-      title: "Support",
-      icon: <Support fontSize="small" />,
-      links: [
-        { label: "Help Center", href: "#" },
-        { label: "Contact Us", href: "#" },
-      ],
-    },
-  ];
-
   return (
     <Box
       sx={{
@@ -57,7 +29,7 @@ export const Footer = () => {
         <Grid container spacing={4}>
           <BrandSections />
 
-          {footerSections.map((section, sectionIndex) => (
+          {footerSections?.map((section, sectionIndex) => (
             <FooterSections section={section} sectionIndex={sectionIndex} key={sectionIndex} />
           ))}
         </Grid>
